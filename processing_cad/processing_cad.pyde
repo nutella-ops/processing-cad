@@ -1,41 +1,50 @@
-#DIMENSION FUNCTIONS
-
-#metric
-def cm(dim):
-    return dim * 64.625 #4k screen
-    # formerly 58.0, macbook screen
-
-def m(dim):
-    return cm(dim)*100.0
-
-def km(dim):
-  return m(dim)*1000.0
-
-def inch(dim):
-  return cm(2.54*dim)
-
+#GLOBAL
+one = 100 #one drawing unit
+rulerScale = 30
 
 #DRAWING FUNCTIONS
 
-#scale ruler
-def ruler(s, dim):
-    return dim * 10 * 1/s*10
-
+#global scale ruler
 def omniRuler(dim):
     return dim * 10 * 1/rulerScale
 
+#local scale ruler
+def ruler(s, dim):
+    return dim * 10 * 1/s*10
+
+#bisect x dimension of a rectangle or triangle
+def midX(a, b):
+    return abs(a+b)/2
+
+#bisect y dimension of a rectangle or triangle
+def midRecY(y1, y2):
+    return abs(y1+y2)/2
+
+#draw rectangle using its center as reference point
+def rectRev(x, y, w, l):
+    x=x-w/2
+    y=y-l/2
+    rect(x, y, w, l)
+
 #MAIN PROGRAM
-# def setup():
 size(1600,2000)
-frameRate(1)
+
+c=1714
+m=800
+b=1100
+j=285
+
+centX=midX(800, 1100)
+centY=midRecY(1714, 285)
+triangle(m, c, b, c, m, j)
+rectRev(centX, centY, 150, 400)
+line(centX, 0, centX, height)
+line(0, centY, width, centY)
 
 
 
-# def draw():
-# for s in [1, 2, 3, 4, 5]:
-#     rect(inch(0.5), inch(1), ruler(s, inch(8)), ruler(s, inch(5)))
 
-rect(inch(0.1), inch(0.1), inch(2), inch(11.8))
-   
 
-     
+# triangle(x, y, omniRuler(dimX), omniRuler(dimY))
+
+    
