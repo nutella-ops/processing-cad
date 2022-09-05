@@ -4,27 +4,39 @@ rulerScale = 30
 
 #DRAWING FUNCTIONS
 
-#global scale ruler
-def omniRuler(dim):
-    return dim * 10 * 1/rulerScale
+class rectangle(): 
+    def __init__(self):
+        self.wid = w
+        self.len = l
+        self.widHalf = w/2
+        self.lenHalf = l/2
+        self.xPos = x
+        self.yPos = y
+        self.midX = abs(x+widHalf-x-widHalf)
+    
+    #draw rectangle using its center as reference point
+    def reverse(self):
+        return rect(xPos-widHalf, yPos-lenHalf, w, l)
+        
+    # #bisect y dimension of a rectangle or triangle
+    # def midRecY(self):
+    #     return abs(x)
 
-#local scale ruler
-def ruler(s, dim):
-    return dim * 10 * 1/s*10
 
-#bisect x dimension of a rectangle or triangle
-def midX(a, b):
-    return abs(a+b)/2
+class ruler():
+    #global scale ruler
+    def global(dim):
+        return dim * 10 * 1/rulerScale
+    
+    #local scale ruler
+    def local(s, dim):
+        return dim * 10 * 1/s*10
 
-#bisect y dimension of a rectangle or triangle
-def midRecY(y1, y2):
-    return abs(y1+y2)/2
 
-#draw rectangle using its center as reference point
-def rectRev(x, y, w, l):
-    x=x-w/2
-    y=y-l/2
-    rect(x, y, w, l)
+
+
+
+
 
 #MAIN PROGRAM
 size(1600,2000)
